@@ -1,4 +1,5 @@
 const input = document.querySelector('input')
+const body = document.body
 const search = document.querySelector('.search')
 const current = document.querySelector('.current')
 const city = document.querySelector('.city')
@@ -32,8 +33,10 @@ search.addEventListener('click', (e) => {
     city.innerText = input.value
     const searchUrl = `${apiAddress}?q=${input.value}&appid=${key}&units=metric`
     axios.get(searchUrl).then(getCurrentTemperature);
-    if (e.target === 1) {
-        location.reload()
+    if (e.target.value === '') {
+        let val = 'Error searching for temperature'
+        // val.style.color = 'red'
+        body.innerText = val
     }
 })
 
